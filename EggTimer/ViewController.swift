@@ -9,12 +9,18 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let eggTimes = ["Soft": 5, "Medium": 7, "Hard": 12]
-
+    let eggTimes = ["Soft": 5 * 60, "Medium": 7 * 60, "Hard": 12 * 60]
+    
     @IBAction func hardnessSelected(_ sender: UIButton) {
         let hardness = sender.currentTitle!
-        print(eggTimes[hardness])
+        
+        var count = eggTimes[hardness]!
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+            if(count > 0) {
+                print("\(count) seconds")
+                count -= 1
+            }
+            
+        }
     }
-
-
 }
